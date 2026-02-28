@@ -1,0 +1,689 @@
+/* =========================
+   UNDERTALE VIBE
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Press Start 2P', cursive;
+    padding: 20px;
+    line-height: 1.8;
+    font-size: 12px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    border: 4px solid #ffffff;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.hero::before {
+    content: "*";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: black;
+    padding: 0 10px;
+    color: #ffff00;
+    font-size: 20px;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    border: 4px solid #ffffff;
+    margin-bottom: 20px;
+    image-rendering: pixelated;
+    filter: grayscale(100%) contrast(150%);
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffff00;
+    text-shadow: 4px 4px 0 #ff0000;
+    word-spacing: -10px;
+}
+
+.hero p {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 10px;
+}
+
+/* =========================
+   UNDERTALE BUTTONS
+========================= */
+
+.buttons a,
+.contact a {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 15px 25px;
+    background: black;
+    border: 3px solid #ffffff;
+    color: white;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.1s step-end;
+    position: relative;
+    box-shadow: 4px 4px 0 #ff0000;
+}
+
+.buttons a:hover,
+.contact a:hover {
+    background: #ffffff;
+    color: black;
+    border-color: #ff0000;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #ff0000;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    border: 3px solid #ffffff;
+    padding: 30px 20px;
+    position: relative;
+}
+
+h2 {
+    color: #ffff00;
+    font-size: 16px;
+    margin-bottom: 30px;
+    text-align: left;
+    border-bottom: 3px solid #ffffff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* =========================
+   PROJECT CARDS (DIALOG BOXES)
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: black;
+    border: 3px solid #ffffff;
+    padding: 20px;
+    text-align: left;
+    transition: all 0.1s step-end;
+    box-shadow: 5px 5px 0 #ff0000;
+}
+
+.card h3 {
+    color: #ffff00;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.card p {
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #ff0000;
+    border-color: #ff0000;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.skill {
+    background: black;
+    border: 2px solid #ffffff;
+    padding: 10px 15px;
+    font-size: 10px;
+    box-shadow: 3px 3px 0 #ff0000;
+}
+
+.skill:hover {
+    background: #ff0000;
+    border-color: #ffff00;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #ffff00;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 80px;
+    padding: 20px;
+    border-top: 3px solid #ffffff;
+    font-size: 8px;
+    color: #808080;
+    text-transform: uppercase;
+}
+
+footer p::before {
+    content: "⋆";
+    margin-right: 10px;
+    color: #ffff00;
+}
+
+footer p::after {
+    content: "⋆";
+    margin-left: 10px;
+    color: #ffff00;
+}
+
+/* =========================
+   SCREEN EFFECT
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* =========================
+   GITHUB REPO STYLES
+========================= */
+
+.repo-stats {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0 10px;
+    font-size: 8px;
+    color: #ffff00;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 8px 0;
+    justify-content: space-around;
+}
+
+.repo-stats span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.repo-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 8px;
+    border: 2px solid #ffffff;
+    padding: 8px 12px;
+    transition: all 0.1s step-end;
+}
+
+.repo-link:hover {
+    background: #ffff00;
+    color: black;
+    border-color: #ff0000;
+    transform: translate(2px, 2px);
+}
+
+.loading, .error, .no-repos {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    border: 3px solid #ffffff;
+    background: black;
+    color: #ffff00;
+    font-size: 12px;
+    animation: blink 1s step-end infinite;
+}
+
+.error {
+    color: #ff0000;
+    animation: none;
+}
+
+.retry-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: black;
+    border: 3px solid #ffffff;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.retry-btn:hover {
+    background: #ff0000;
+    transform: translate(2px, 2px);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Анимация для новых карточек */
+.card {
+    animation: appear 0.3s step-end;
+}
+
+@keyframes appear {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================
+   PIXEL HEARTS & SOULS
+========================= */
+
+.soul {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #ff0000;
+    position: relative;
+    transform: rotate(45deg);
+    margin: 0 5px;
+    animation: soul-pulse 1s step-end infinite;
+}
+
+.soul::before,
+.soul::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff0000;
+    border-radius: 50%;
+}
+
+.soul::before {
+    left: -10px;
+    top: 0;
+}
+
+.soul::after {
+    top: -10px;
+    left: 0;
+}
+
+@keyframes soul-pulse {
+    0%, 100% { opacity: 1; transform: rotate(45deg) scale(1); }
+    50% { opacity: 0.8; transform: rotate(45deg) scale(0.95); }
+}
+
+/* =========================
+   PIXEL BORDERS (Более игровые)
+========================= */
+
+.pixel-border {
+    position: relative;
+    border: none !important;
+}
+
+.pixel-border::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 4px solid #ffffff;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+.pixel-border::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid #ff0000;
+    pointer-events: none;
+    image-rendering: pixelated;
+    opacity: 0.5;
+}
+
+/* =========================
+   DIALOG BOX (Как в игре)
+========================= */
+
+.dialog-box {
+    background: black;
+    border: 6px solid #ffffff;
+    border-radius: 0;
+    padding: 25px;
+    position: relative;
+    box-shadow: 8px 8px 0 #ff0000;
+    margin: 30px 0;
+}
+
+.dialog-box::before {
+    content: "▼";
+    position: absolute;
+    bottom: -25px;
+    right: 20px;
+    color: #ffff00;
+    font-size: 16px;
+    animation: blink 1s step-end infinite;
+}
+
+.dialog-box p {
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   HP/BATTLE BARS
+========================= */
+
+.hp-bar {
+    width: 100%;
+    height: 20px;
+    border: 3px solid #ffffff;
+    background: black;
+    margin: 15px 0;
+    position: relative;
+}
+
+.hp-fill {
+    height: 100%;
+    width: 80%;
+    background: #ffff00;
+    position: relative;
+    image-rendering: pixelated;
+}
+
+.hp-fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 4px,
+        rgba(0, 0, 0, 0.3) 4px,
+        rgba(0, 0, 0, 0.3) 8px
+    );
+}
+
+.hp-text {
+    font-size: 8px;
+    color: #ffff00;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* =========================
+   PIXEL ICONS
+========================= */
+
+.pixel-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    border: 3px solid #000000;
+    position: relative;
+    margin: 5px;
+}
+
+.pixel-icon::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: #ff0000;
+    border: 2px solid #000000;
+}
+
+/* Иконки для разных языков */
+.icon-python::before {
+    background: #ffff00;
+}
+
+.icon-csharp::before {
+    background: #00ff00;
+}
+
+.icon-unity::before {
+    background: #ffffff;
+}
+
+/* =========================
+   BATTLE TRANSITION
+========================= */
+
+.battle-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s step-end;
+}
+
+.battle-transition.active {
+    opacity: 1;
+    animation: battle-flash 0.3s step-end;
+}
+
+@keyframes battle-flash {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* =========================
+   МИГАЮЩИЙ ТЕКСТ (как сохранения)
+========================= */
+
+.blink-text {
+    animation: text-blink 1s step-end infinite;
+    color: #ffff00;
+}
+
+@keyframes text-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* =========================
+   СТАТИСТИКА В СТИЛЕ UNDERTALE
+========================= */
+
+.stats-container {
+    border: 3px solid #ffffff;
+    padding: 20px;
+    background: black;
+    margin: 20px 0;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 2px solid #ffffff;
+    font-size: 10px;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    color: #ffffff;
+}
+
+.stat-value {
+    color: #ffff00;
+}
+
+.stat-value::before {
+    content: "[";
+    color: #ff0000;
+    margin-right: 5px;
+}
+
+.stat-value::after {
+    content: "]";
+    color: #ff0000;
+    margin-left: 5px;
+}
+
+/* =========================
+   LV (LOVE) COUNTER
+========================= */
+
+.lv-counter {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 8px;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 10px;
+    background: black;
+    z-index: 100;
+}
+
+.lv-number {
+    color: #ff0000;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* =========================
+   SMALL SCREENS
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 8px;
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 14px;
+        text-shadow: 3px 3px 0 #ff0000;
+    }
+    
+    h2 {
+        font-size: 12px;
+    }
+    
+    .buttons a,
+    .contact a {
+        width: 100%;
+        margin: 5px 0;
+        font-size: 10px;
+        padding: 12px;
+    }
+    
+    .card h3 {
+        font-size: 10px;
+    }
+    
+    .skill {
+        font-size: 8px;
+        padding: 8px 10px;
+    }
+    
+    /* Адаптация для репозиториев на мобилках */
+    .repo-stats {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+    
+    .loading, .error, .no-repos {
+        font-size: 8px;
+        padding: 20px;
+    }
+    
+    .lv-counter {
+        top: 10px;
+        right: 10px;
+        font-size: 6px;
+        padding: 5px;
+    }
+    
+    .lv-number {
+        font-size: 12px;
+    }
+}
