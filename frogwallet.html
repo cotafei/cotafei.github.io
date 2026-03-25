@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="FrogWallet — Telegram-копилка с геймификацией. Копи деньги как в игре.">
+    <title>FrogWallet — первый финансовый коуч в Telegram</title>
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           FROGWALLET BOT LANDING — Telegram Mini App Style v4.0
+           Dark Theme + Glassmorphism + #32d74b Accent
+           ═══════════════════════════════════════════════════════════ */
+
+        :root {
+            /* Telegram Theme Integration */
+            --tg-bg: #0f0f0f;
+            --tg-text: #ffffff;
+            --tg-hint: #8e8e93;
+            --tg-link: #32d74b;
+            --tg-button: #32d74b;
+            --tg-button-text: #000000;
+            --tg-secondary-bg: #1c1c1e;
+
+            /* Extended Palette */
+            --color-bg: var(--tg-bg);
+            --color-surface: var(--tg-secondary-bg);
+            --color-surface-elevated: rgba(44, 44, 46, 0.8);
+            --color-primary: var(--tg-button, #32d74b);
+            --color-primary-dark: #28b53d;
+            --color-accent: #0a84ff;
+            --color-danger: #ff453a;
+            --color-warning: #ff9f0a;
+            --color-gold: #ffd60a;
+            --color-success: #30d158;
+
+            /* Text Colors */
+            --text-primary: var(--tg-text);
+            --text-secondary: var(--tg-hint);
+            --text-tertiary: rgba(255, 255, 255, 0.4);
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #32d74b 0%, #28b53d 100%);
+            --gradient-gold: linear-gradient(135deg, #ffd60a 0%, #ff9f0a 100%);
+            --gradient-surface: linear-gradient(180deg, rgba(44,44,46,0.9) 0%, rgba(28,28,30,0.95) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            --gradient-hero: radial-gradient(ellipse at 30% 20%, rgba(50, 215, 75, 0.15) 0%, transparent 50%),
+                              radial-gradient(ellipse at 70% 80%, rgba(40, 181, 61, 0.1) 0%, transparent 50%),
+                              #0f0f0f;
+
+            /* Shadows & Effects */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+            --shadow-glow: 0 0 20px rgba(50, 215, 75, 0.3);
+            --shadow-gold: 0 0 20px rgba(255, 214, 10, 0.3);
+
+            /* Blur */
+            --blur-sm: blur(10px);
+            --blur-md: blur(20px);
+            --blur-lg: blur(40px);
+
+            /* Spacing Scale */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-10: 40px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-2xl: 32px;
+            --radius-full: 9999px;
+
+            /* Typography */
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-mono: "SF Mono", Monaco, "Cascadia Code", monospace;
+
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            /* Safe Areas */
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.47059;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+            background: var(--color-bg);
+            color: var(--text-primary);
+            overscroll-behavior: none;
+        }
+
+        body {
+            background: var(--color-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Typography Scale */
+        h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+        h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; letter-spacing: -0.021em; }
+        h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.021em; }
+        .text-lg { font-size: 20px; font-weight: 600; }
+        .text-base { font-size: 17px; }
+        .text-sm { font-size: 15px; }
+        .text-xs { font-size: 13px; }
+
+        /* Utility */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: calc(var(--safe-top) + var(--space-10)) var(--space-4) calc(var(--safe-bottom) + var(--space-8));
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🐸';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: heroFloat 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            50% { transform: translate(-50%, -55%) rotate(5deg) scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: rgba(50, 215, 75, 0.12);
+            border: 1px solid rgba(50, 215, 75, 0.3);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-6);
+            backdrop-filter: var(--blur-sm);
+            animation: chipPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes chipPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(50, 215, 75, 0.2); }
+            50% { box-shadow: 0 0 20px 0 rgba(50, 215, 75, 0.4); }
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-4);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            align-items: center;
+        }
+
+        @media (min-width: 480px) {
+            .btn-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-xl);
+            font-weight: 700;
+            font-size: 17px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--tg-button-text);
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(50, 215, 75, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.96);
+        }
+
+        .btn-secondary {
+            background: var(--color-surface);
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-surface-elevated);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.96);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+            margin-top: var(--space-8);
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           SECTIONS
+           ═══════════════════════════════════════════════════════════ */
+        .section {
+            padding: var(--space-10) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .badge {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+            display: block;
+        }
+
+        .section-title {
+            margin-bottom: var(--space-3);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           CARDS (Glassmorphism)
+           ═══════════════════════════════════════════════════════════ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-4);
+        }
+
+        @media (min-width: 640px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--gradient-surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: var(--blur-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            border-color: rgba(50, 215, 75, 0.3);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-emoji {
+            font-size: 40px;
+            margin-bottom: var(--space-4);
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .card h3 {
+            margin-bottom: var(--space-3);
+            font-size: 17px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: var(--space-4);
+        }
+
+        .solution {
+            background: rgba(50, 215, 75, 0.08);
+            border-left: 3px solid var(--color-primary);
+            padding: var(--space-3) var(--space-4);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           FEATURES
+           ═══════════════════════════════════════════════════════════ */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+            align-items: center;
+            margin-bottom: var(--space-10);
+        }
+
+        @media (min-width: 768px) {
+            .feature-row {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-8);
+                margin-bottom: var(--space-10);
+            }
+        }
+
+        .feature-row.reverse {
+            direction: rtl;
+        }
+
+        .feature-row.reverse > * {
+            direction: ltr;
+        }
+
+        .feature-visual {
+            background: var(--gradient-glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: var(--blur-md);
+        }
+
+        .feature-visual::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(50, 215, 75, 0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .feature-icon {
+            font-size: 64px;
+            position: relative;
+            z-index: 1;
+            margin-bottom: var(--space-4);
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(50, 215, 75, 0.3));
+        }
+
+        .feature-content h3 {
+            margin-bottom: var(--space-4);
+            font-size: 22px;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            margin-bottom: var(--space-3);
+            display: flex;
+            gap: var(--space-2);
+            align-items: flex-start;
+            font-size: 15px;
+        }
+
+        .check-list li::before {
+            content: '→';
+            color: var(--color-primary);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           PRICING
+           ═══════════════════════════════════════════════════════════ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-5);
+            margin-top: var(--space-6);
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-4);
+            }
+        }
+
+        .price-card {
+            background: var(--gradient-surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6) var(--space-5);
+            transition: all var(--transition-fast);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: var(--blur-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        @media (min-width: 768px) {
+            .price-card.popular {
+                transform: scale(1.05);
+                z-index: 2;
+            }
+        }
+
+        .price-card.popular {
+            border: 2px solid var(--color-primary);
+            background: linear-gradient(145deg, rgba(50, 215, 75, 0.08) 0%, var(--color-surface) 100%);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .popular-badge {
+            background: var(--color-primary);
+            color: var(--tg-button-text);
+            font-size: 11px;
+            font-weight: 800;
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            display: inline-block;
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: var(--space-1);
+        }
+
+        .price-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: var(--space-4);
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            margin: var(--space-2) 0;
+            letter-spacing: -0.02em;
+        }
+
+        .price small {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+        }
+
+        .price-note {
+            font-size: 13px;
+            color: var(--color-primary);
+            margin-bottom: var(--space-4);
+            font-weight: 500;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: var(--space-4) 0;
+            flex: 1;
+        }
+
+        .price-features li {
+            padding: var(--space-2) 0;
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .price-features li.disabled {
+            color: var(--text-tertiary);
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        .price-features li.disabled::before {
+            content: '—';
+            color: var(--text-tertiary);
+        }
+
+        .btn-price {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            padding: var(--space-4);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            margin-top: auto;
+            font-family: inherit;
+        }
+
+        .btn-price:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-price.primary {
+            background: var(--gradient-primary);
+            color: var(--tg-button-text);
+            border: none;
+            font-weight: 700;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-price.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(50, 215, 75, 0.4);
+        }
+
+        /* Referral Banner */
+        .referral-banner {
+            text-align: center;
+            margin-top: var(--space-8);
+            background: linear-gradient(135deg, rgba(50, 215, 75, 0.1) 0%, rgba(50, 215, 75, 0.02) 100%);
+            border: 1px solid rgba(50, 215, 75, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-5);
+        }
+
+        .referral-banner strong {
+            color: var(--color-primary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           FINAL CTA
+           ═══════════════════════════════════════════════════════════ */
+        .final-cta {
+            background: var(--gradient-glass);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8) var(--space-6);
+            text-align: center;
+            margin: var(--space-8) 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: var(--blur-md);
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(50, 215, 75, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
+            margin-bottom: var(--space-4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto var(--space-6);
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .final-cta .btn-primary {
+            position: relative;
+            z-index: 1;
+            padding: var(--space-4) var(--space-8);
+            font-size: 17px;
+        }
+
+        .final-cta small {
+            display: block;
+            margin-top: var(--space-6);
+            color: var(--text-tertiary);
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════ */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: var(--space-8) var(--space-6) calc(var(--safe-bottom) + var(--space-6));
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 13px;
+        }
+
+        footer .logo {
+            font-size: 48px;
+            margin-bottom: var(--space-4);
+            filter: drop-shadow(0 0 20px rgba(50, 215, 75, 0.3));
+        }
+
+        footer p {
+            margin-bottom: var(--space-2);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Mobile touch feedback */
+        @media (hover: none) {
+            .btn:active, .btn-price:active {
+                transform: scale(0.96);
+            }
+
+            .card:active, .price-card:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="chip reveal">
+                🐸 совсем новый • ищем первых пользователей
+            </div>
+
+            <h1 class="reveal">
+                Мы не копим, потому что <span class="gradient-text">нет ощущения прогресса</span>
+            </h1>
+
+            <p class="hero-subtitle reveal">
+                FrogWallet — Telegram-копилка, которая играет с вами. 
+                Каждый перевод на цель = вспышка дофамина. Без чувства вины и скучных таблиц.
+            </p>
+
+            <div class="btn-group reveal">
+                <a href="https://t.me/FrogsWalletBot?start=ref_5VEIO1UD" class="btn btn-primary" target="_blank">
+                    🐸 Запустить FrogWallet →
+                </a>
+                <button class="btn btn-secondary" onclick="scrollToPricing()">
+                    💚 Выбрать тариф
+                </button>
+            </div>
+
+            <div class="trust-badges reveal">
+                <span>⚡ Telegram Mini App</span>
+                <span>🔐 данные локально</span>
+                <span>🎮 психология + игра</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header reveal">
+                <span class="badge">почему сливаемся</span>
+                <h2 class="section-title">Приложения для бюджета бесят.<br>Мы сделали иначе.</h2>
+                <p class="section-subtitle">Никакого стыда за траты — только чувство движения вперёд.</p>
+            </div>
+
+            <div class="cards-grid stagger-children">
+                <div class="card">
+                    <span class="card-emoji">😵</span>
+                    <h3>Тревога от таблиц</h3>
+                    <p>Excel показывает, где ты "провалился". Это демотивирует и вызывает чувство вины.</p>
+                    <div class="solution">✅ Вместо запретов — цели и визуальный рост</div>
+                </div>
+
+                <div class="card">
+                    <span class="card-emoji">🎯</span>
+                    <h3>Цели слишком абстрактны</h3>
+                    <p>"Накопить на отпуск" — мозг не чувствует связи с сегодняшним днём.</p>
+                    <div class="solution">✅ Прогресс-бары и достижения за milestones</div>
+                </div>
+
+                <div class="card">
+                    <span class="card-emoji">💔</span>
+                    <h3>Стыд за срывы</h3>
+                    <p>Потратил лишнее → всё пропало. Появляется желание забить на всё.</p>
+                    <div class="solution">✅ Streak-система: каждый день — новая попытка</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="section" style="padding-top: 20px;">
+            <div class="feature-row reveal">
+                <div class="feature-visual">
+                    <span class="feature-icon">🧩</span>
+                    <div style="font-weight:600; color: var(--color-primary); font-size: 14px;">
+                        + достижение "7 дней в режиме лягушки"
+                    </div>
+                </div>
+                <div class="feature-content">
+                    <h3>Игра, а не учёт</h3>
+                    <p>Streak'и, уровни, ачивки. Каждый день без перерасхода даёт + к "финансовому здоровью". Как Duolingo, только для денег.</p>
+                    <ul class="check-list">
+                        <li>Система челленджей с наградами</li>
+                        <li>Дофаминовые уведомления после каждого пополнения цели</li>
+                        <li>Соревнуйся с собой вчерашним</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-row reverse reveal">
+                <div class="feature-visual">
+                    <span class="feature-icon">⚡</span>
+                    <div style="font-size: 14px; color: var(--text-secondary);">
+                        📲 Telegram Mini App<br>не надо ничего качать
+                    </div>
+                </div>
+                <div class="feature-content">
+                    <h3>Мгновенная обратная связь</h3>
+                    <p>Доход пришёл → бот сразу показывает, сколько можно потратить сегодня, а сколько улетело в цель.</p>
+                    <ul class="check-list">
+                        <li>Авто-расчёт дневного лимита</li>
+                        <li>Push: "ты отложил 500₽ на PS5, осталось 12 400"</li>
+                        <li>Работает внутри Telegram — никаких установок</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Psychology -->
+        <div class="section">
+            <div class="section-header reveal">
+                <span class="badge">поведенческая экономика</span>
+                <h2 class="section-title">Почему это затягивает</h2>
+                <p class="section-subtitle">Основано на когнитивных искажениях, которые работают на тебя</p>
+            </div>
+
+            <div class="cards-grid stagger-children">
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; background: rgba(50, 215, 75, 0.1); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 24px; margin: 0 auto var(--space-4) auto; border: 1px solid rgba(50, 215, 75, 0.2);">🧠</div>
+                    <h3>Эффект цели</h3>
+                    <p>Видя 80% заполненного прогресс-бара, мозг требует завершить. Мы используем это, чтобы ты не бросил копить.</p>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; background: rgba(50, 215, 75, 0.1); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 24px; margin: 0 auto var(--space-4) auto; border: 1px solid rgba(50, 215, 75, 0.2);">⚓</div>
+                    <h3>Якорение</h3>
+                    <p>Показываем дневной бюджет вместо общей суммы. 450₽/день легче контролировать, чем 13 500₽/мес.</p>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; background: rgba(50, 215, 75, 0.1); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 24px; margin: 0 auto var(--space-4) auto; border: 1px solid rgba(50, 215, 75, 0.2);">🎁</div>
+                    <h3>Переменная награда</h3>
+                    <p>Ачивки приходят неожиданно (за streak, первую неделю). Это вызывает привыкание сильнее предсказуемых бонусов.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="section" id="pricing">
+            <div class="section-header reveal">
+                <span class="badge">ранний доступ</span>
+                <h2 class="section-title">Платить или нет? Выбирай</h2>
+                <p class="section-subtitle">Мы только стартуем, поэтому цены минимальные. Бесплатный тариф — полноценный, чтобы понять, заходит ли тебе механика.</p>
+            </div>
+
+            <div class="pricing-grid stagger-children">
+                <div class="price-card">
+                    <span class="popular-badge">🐸 FREE</span>
+                    <div class="price-name">Старт</div>
+                    <div class="price-desc">Для знакомства с системой</div>
+                    <div class="price">0₽ <small>навсегда</small></div>
+                    <ul class="price-features">
+                        <li>3 активные цели</li>
+                        <li>Streak & достижения</li>
+                        <li>Дневной бюджет + авторасчёт</li>
+                        <li>Базовая статистика</li>
+                        <li class="disabled">Неограниченные цели</li>
+                        <li class="disabled">Совместный счёт</li>
+                    </ul>
+                    <button class="btn-price" onclick="openBot('free')">Начать бесплатно</button>
+                </div>
+
+                <div class="price-card popular">
+                    <span class="popular-badge">🔥 самый умный выбор</span>
+                    <div class="price-name">Pro</div>
+                    <div class="price-desc">Для тех, кто серьёзно</div>
+                    <div class="price">199₽ <small>/ мес</small></div>
+                    <div class="price-note">≈ 6₽/день — дешевле кофе</div>
+                    <ul class="price-features">
+                        <li>Всё из Free</li>
+                        <li>Неограниченные цели</li>
+                        <li>AI-анализ: куда уходят деньги</li>
+                        <li>Совместный счёт с партнёром</li>
+                        <li>Экспорт данных</li>
+                        <li>Ранний доступ к новым механикам</li>
+                    </ul>
+                    <button class="btn-price primary" onclick="openBot('pro')">💚 Активировать Pro</button>
+                </div>
+
+                <div class="price-card">
+                    <span class="popular-badge">👨‍👩‍👧‍👦 FAMILY</span>
+                    <div class="price-name">Семья</div>
+                    <div class="price-desc">До 5 человек</div>
+                    <div class="price">499₽ <small>/ мес</small></div>
+                    <ul class="price-features">
+                        <li>Всё из Pro</li>
+                        <li>До 5 профилей</li>
+                        <li>Семейные цели (дом, путешествия)</li>
+                        <li>Детские копилки</li>
+                        <li>Общий дашборд</li>
+                        <li>Родительский контроль</li>
+                    </ul>
+                    <button class="btn-price" onclick="openBot('family')">Выбрать Family</button>
+                </div>
+            </div>
+
+            <div class="referral-banner reveal">
+                🎁 <strong>Приведи друга → получи Pro на месяц бесплатно</strong><br>
+                <small style="color: var(--text-secondary);">Работает уже сейчас. Друг должен сделать первую запись.</small>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="final-cta reveal">
+            <div style="font-size: 48px; margin-bottom: var(--space-4);">🐸✨</div>
+            <h2>Первые 500 пользователей получают <span class="gradient-text">Pro навсегда</span> со скидкой 90%</h2>
+            <p>Пока нас никто не знает, мы готовы давать максимальные условия. Стань одним из первых — помоги сделать FrogWallet лучше и получи Pro за символические 20₽/мес.</p>
+            <a href="https://t.me/FrogsWalletBot?start=ref_5VEIO1UD" class="btn btn-primary" target="_blank" style="font-size: 17px; padding: var(--space-4) var(--space-8);">
+                🐸 Хочу в первую волну →
+            </a>
+            <small>Telegram-бот • без рекламы • честная статистика</small>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">🐸</div>
+        <p><strong>FrogWallet</strong> — копилка, которая не стыдит</p>
+        <p>Мы на старте, поэтому цены занижены, а фидбек разбираем лично.</p>
+        <p style="margin-top: var(--space-3); opacity: 0.6;">2026 • Версия 3.2 • Прошли аудит безопасности</p>
+    </footer>
+
+    <script>
+        // Scroll to pricing
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Open bot with tracking
+        function openBot(plan) {
+            console.log('Opening bot from plan:', plan);
+            window.open('https://t.me/FrogsWalletBot?start=ref_5VEIO1UD', '_blank');
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('stagger-children')) {
+                        entry.target.classList.add('visible');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .stagger-children').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initial check for elements already in viewport
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                el.classList.add('visible');
+            }
+        });
+
+        // Prevent double-tap zoom on iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+
+</body>
+</html>
