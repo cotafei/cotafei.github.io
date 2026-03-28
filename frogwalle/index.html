@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrogWallet — Твой финансовый помощник в Telegram</title>
+  <meta name="description" content="Учёт доходов и расходов, дневной бюджет, цели накопления и геймификация финансов прямо в Telegram. Бесплатно.">
+  <meta property="og:title" content="FrogWallet 🐸 — Финансы в Telegram">
+  <meta property="og:description" content="Дневной бюджет, цели накопления, достижения и реферальная система. Бесплатно.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="logo-icon">🐸</span>
+      <span class="logo-text">FrogWallet</span>
+      <span class="logo-badge">Beta</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Функции</a>
+      <a href="#how">Как работает</a>
+      <a href="#reviews">Отзывы</a>
+    </div>
+    <a href="https://t.me/FrogsWalletBot" class="btn-nav" target="_blank">Открыть в Telegram</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-lines"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        v3.4 Beta — уже доступно
+      </div>
+
+      <h1 class="hero-title">
+        Деньги под<br>
+        <span class="gradient-text">контролем</span><br>
+        каждый день
+      </h1>
+
+      <p class="hero-subtitle">
+        Telegram Mini App для тех кто хочет копить,<br>
+        не сдохнуть с голода и знать куда уходят деньги.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://t.me/FrogsWalletBot" class="btn-primary" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.163 14.75l-2.952-.924c-.642-.2-.654-.642.136-.953l11.527-4.444c.535-.194 1.003.13.688.82z"/></svg>
+          Начать бесплатно
+        </a>
+        <a href="#how" class="btn-secondary">
+          Как это работает
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Бесплатно</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">5 мин</div>
+          <div class="stat-label">На настройку</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Без рекламы</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHONE MOCKUP -->
+    <div class="hero-phone">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="mock-header">
+            <div class="mock-greeting">Привет, Agabalaev! 🐸</div>
+            <div class="mock-score">⭐ 340 очков</div>
+          </div>
+          <div class="mock-budget-card">
+            <div class="mock-label">Осталось сегодня</div>
+            <div class="mock-amount">1 240 <span>₽</span></div>
+            <div class="mock-progress">
+              <div class="mock-progress-bar" style="width: 62%"></div>
+            </div>
+            <div class="mock-meta">
+              <span>Потрачено 760 ₽</span>
+              <span>из 2 000 ₽/день</span>
+            </div>
+          </div>
+          <div class="mock-cards-row">
+            <div class="mock-mini-card green">
+              <div class="mock-mini-icon">💰</div>
+              <div class="mock-mini-val">+45 000</div>
+              <div class="mock-mini-label">Доход</div>
+            </div>
+            <div class="mock-mini-card red">
+              <div class="mock-mini-icon">🛍</div>
+              <div class="mock-mini-val">−12 340</div>
+              <div class="mock-mini-label">Расход</div>
+            </div>
+            <div class="mock-mini-card gold">
+              <div class="mock-mini-icon">🎯</div>
+              <div class="mock-mini-val">4 500</div>
+              <div class="mock-mini-label">Накоплено</div>
+            </div>
+          </div>
+          <div class="mock-tx-list">
+            <div class="mock-tx">
+              <span class="mock-tx-cat">🍕 Еда</span>
+              <span class="mock-tx-sum minus">−320 ₽</span>
+            </div>
+            <div class="mock-tx">
+              <span class="mock-tx-cat">🚌 Транспорт</span>
+              <span class="mock-tx-sum minus">−75 ₽</span>
+            </div>
+            <div class="mock-tx">
+              <span class="mock-tx-cat">💻 Фриланс</span>
+              <span class="mock-tx-sum plus">+5 000 ₽</span>
+            </div>
+          </div>
+          <div class="mock-nav">
+            <span class="mock-nav-item active">🐸</span>
+            <span class="mock-nav-item">📋</span>
+            <span class="mock-nav-item">🎯</span>
+            <span class="mock-nav-item">⭐</span>
+            <span class="mock-nav-item">⚙️</span>
+          </div>
+        </div>
+      </div>
+      <div class="phone-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Функции</div>
+      <h2 class="section-title">Всё что нужно<br>для финансов</h2>
+      <p class="section-sub">Никаких лишних экранов. Только то что реально помогает.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card feature-big">
+        <div class="feature-icon-big">📊</div>
+        <h3>Дневной бюджет</h3>
+        <p>Приложение автоматически считает сколько можно потратить сегодня исходя из дохода и количества дней до зарплаты. Режим выживания при низком балансе.</p>
+        <div class="feature-tag">Главная фишка</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Доходы и расходы</h3>
+        <p>Быстрое добавление в пару тапов. Категории, заметки, история.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Цели накопления</h3>
+        <p>Ставь цели — iPhone, поездка, ноутбук — и следи за прогрессом.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Достижения и streak</h3>
+        <p>Геймификация финансов. Зарабатывай очки, повышай ранг от Новичка до Мастера.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Финансовый счёт</h3>
+        <p>Оценка твоей финансовой дисциплины от 0 до 100 на основе реальных данных.</p>
+      </div>
+
+      <div class="feature-card feature-big-2">
+        <div class="feature-icon-big">👥</div>
+        <h3>Реферальная программа</h3>
+        <p>Пригласи друга — вы оба получите бонусные дни к расчёту бюджета. Ссылка генерируется автоматически командой /ref.</p>
+        <div class="feature-tag tag-green">Бесплатные бонусы</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⚠️</div>
+        <h3>Лимиты по категориям</h3>
+        <p>Задай максимум трат на еду, транспорт, развлечения — получай предупреждения.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>Совет дня</h3>
+        <p>Персональные подсказки по финансам каждый день через /tip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Как работает</div>
+      <h2 class="section-title">Три шага<br>до контроля</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Открой бота</h3>
+          <p>Найди <strong>@FrogsWalletBot</strong> в Telegram и нажми /start. Без регистрации, без почты, без пароля.</p>
+        </div>
+        <div class="step-visual">
+          <div class="step-card">
+            <div class="step-card-emoji">🐸</div>
+            <div class="step-card-text">Привет! Нажми чтобы начать</div>
+            <div class="step-card-btn">Открыть FrogWallet</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step step-reverse">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Настрой за 2 минуты</h3>
+          <p>Укажи баланс карты, процент в накопления и порог выживания. Приложение само посчитает дневной бюджет.</p>
+        </div>
+        <div class="step-visual">
+          <div class="step-form">
+            <div class="step-form-row">
+              <span>💳 Баланс</span>
+              <span class="step-form-val">45 000 ₽</span>
+            </div>
+            <div class="step-form-row">
+              <span>📅 До зарплаты</span>
+              <span class="step-form-val">18 дней</span>
+            </div>
+            <div class="step-form-row highlight">
+              <span>📊 В день</span>
+              <span class="step-form-val green">2 500 ₽</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Записывай и копи</h3>
+          <p>Каждый доход и расход обновляет дневной бюджет в реальном времени. Набирай очки, выполняй достижения.</p>
+        </div>
+        <div class="step-visual">
+          <div class="step-achievements">
+            <div class="ach-item earned">🥚 Первый доход</div>
+            <div class="ach-item earned">🔥 Streak 7 дней</div>
+            <div class="ach-item earned">💰 Накоплено 10к</div>
+            <div class="ach-item">🏆 Финансист...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-bg">
+    <div class="blob blob-cta-1"></div>
+    <div class="blob blob-cta-2"></div>
+  </div>
+  <div class="container">
+    <div class="cta-content">
+      <div class="cta-emoji">🐸</div>
+      <h2 class="cta-title">Начни контролировать<br>деньги прямо сейчас</h2>
+      <p class="cta-sub">Бесплатно. Без регистрации. Прямо в Telegram.</p>
+      <a href="https://t.me/FrogsWalletBot" class="btn-primary btn-large" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.163 14.75l-2.952-.924c-.642-.2-.654-.642.136-.953l11.527-4.444c.535-.194 1.003.13.688.82z"/></svg>
+        Открыть @FrogsWalletBot
+      </a>
+      <div class="cta-note">v3.4 Beta · Закрытое тестирование</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🐸</span>
+        <span class="logo-text">FrogWallet</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://t.me/FrogsWalletBot" target="_blank">Бот</a>
+        <a href="https://t.me/FrogsWalletSupport" target="_blank">Поддержка</a>
+      </div>
+      <div class="footer-copy">© 2025 FrogWallet Beta</div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
